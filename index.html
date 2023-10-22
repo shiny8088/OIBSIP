@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculator</title>
+    <style>
+        body {
+            background-color: black;
+        }
+
+        table {
+            border: 1px solid white;
+            border-radius: 10px;
+			padding:20px;
+        }
+
+        button {
+            width: 100px;
+            height: 50px;
+            padding: 10px;
+            font-size: 16px;
+			background-color:#63C5DA;
+        }
+    </style>
+    <script>
+        function display(value) {
+            document.getElementById('result').value += value;
+        }
+
+        function clearInput() {
+            document.getElementById('result').value = '';
+        }
+
+        function operate(operator) {
+            document.getElementById('result').value += ' ' + operator + ' ';
+        }
+
+        function calculate() {
+            try {
+                document.getElementById('result').value = eval(document.getElementById('result').value);
+            } catch (error) {
+                document.getElementById('result').value = 'Error';
+            }
+        }
+    </script>
+</head>
+<body>
+<div align="center">
+    <h1 style="color: white">Calculator</h1>
+    <table>
+        <tr>
+            <td colspan="4"><input type="text" id="result" style="width:400px; height:50px; padding:10px; font-size:24px; background-color:#D9DDDC;"></td>
+        </tr>
+        <tr>
+            <td><button type="button" onclick="display('7')">7</button></td>
+            <td><button type="button" onclick="display('8')">8</button></td>
+            <td><button type="button" onclick="display('9')">9</button></td>
+            <td><button type="button" onclick="operate('+')">&#x2B;</button></td>
+        </tr>
+        <tr>
+            <td><button type="button" onclick="display('4')">4</button></td>
+            <td><button type="button" onclick="display('5')">5</button></td>
+            <td><button type="button" onclick="display('6')">6</button></td>
+            <td><button type="button" onclick="operate('*')">&#215;</button></td>
+        </tr>
+        <tr>
+            <td><button type="button" onclick="display('1')">1</button></td>
+            <td><button type="button" onclick="display('2')">2</button></td>
+            <td><button type="button" onclick="display('3')">3</button></td>
+            <td><button type="button" onclick="operate('-')">&#x2212;</button></td>
+        </tr>
+        <tr>
+            <td><button type="button" onclick="display('.')">&#x2E;</button></td>
+            <td><button type="button" onclick="display('0')">0</button></td>
+            <td><button onclick="clearInput()">AC</button></td>
+            <td><button type="button" onclick="operate('/')">&#x00F7;</button></td>
+        </tr>
+        <tr>
+            <td colspan="4"><input type="button" style="width:420px; height:50px; padding:10px; font-size:16px; background-color:#63C5DA;"value="Calculate" onclick="calculate()"></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
